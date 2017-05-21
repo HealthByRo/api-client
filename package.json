@@ -32,7 +32,8 @@
   },
   "pre-commit": "lint:staged",
   "dependencies": {
-    "axios": "^0.16.1"
+    "axios": "^0.16.1",
+    "humps": "^2.0.0"
   },
   "peerDependencies": {},
   "devDependencies": {

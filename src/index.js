@@ -1,6 +1,15 @@
-import * as axios from 'axios';
+import axios from 'axios';
+import humps from 'humps';
 
-const apiClient = axios.create({});
+const {
+  transformRequest,
+  transformResponse,
+} = axios.defaults;
+
+const apiClient = axios.create({
+  transformRequest: [humps.decamelizeKeys].concat(transformRequest),
+  transformResponse: transformResponse.concat(humps.camelizeKeys),
+});
 
 export function setHeaders(headers) {
   apiClient.defaults.headers = {
