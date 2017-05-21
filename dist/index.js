@@ -11,11 +11,23 @@ exports.setBaseUrl = setBaseUrl;
 
 var _axios = require('axios');
 
-var axios = _interopRequireWildcard(_axios);
+var _axios2 = _interopRequireDefault(_axios);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _humps = require('humps');
 
-var apiClient = axios.create({});
+var _humps2 = _interopRequireDefault(_humps);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _axios$defaults = _axios2.default.defaults,
+    transformRequest = _axios$defaults.transformRequest,
+    transformResponse = _axios$defaults.transformResponse;
+
+
+var apiClient = _axios2.default.create({
+  transformRequest: [_humps2.default.decamelizeKeys].concat(transformRequest),
+  transformResponse: transformResponse.concat(_humps2.default.camelizeKeys)
+});
 
 function setHeaders(headers) {
   apiClient.defaults.headers = _extends({}, apiClient.defaults.headers, headers);
