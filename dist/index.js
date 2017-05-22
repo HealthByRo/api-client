@@ -20,6 +20,10 @@ var _humps = require('humps');
 
 var _humps2 = _interopRequireDefault(_humps);
 
+var _qs = require('qs');
+
+var _qs2 = _interopRequireDefault(_qs);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _axios$defaults = _axios2.default.defaults,
@@ -29,7 +33,12 @@ var _axios$defaults = _axios2.default.defaults,
 
 var apiClient = _axios2.default.create({
   transformRequest: [toJS, _humps2.default.decamelizeKeys].concat(transformRequest),
-  transformResponse: transformResponse.concat(_humps2.default.camelizeKeys)
+  transformResponse: transformResponse.concat(_humps2.default.camelizeKeys),
+  paramsSerializer: function paramsSerializer(params) {
+    return _qs2.default.stringify(_humps2.default.decamelizeKeys(params), {
+      arrayFormat: 'brackets'
+    });
+  }
 });
 
 function toJS(map) {
