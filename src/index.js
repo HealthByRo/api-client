@@ -7,9 +7,16 @@ const {
 } = axios.defaults;
 
 const apiClient = axios.create({
-  transformRequest: [humps.decamelizeKeys].concat(transformRequest),
+  transformRequest: [toJS, humps.decamelizeKeys].concat(transformRequest),
   transformResponse: transformResponse.concat(humps.camelizeKeys),
 });
+
+export function toJS(map) {
+  if (typeof map === 'object' && typeof map.toJS === 'function') {
+    return map.toJS();
+  }
+  return map;
+}
 
 export function setHeaders(headers) {
   apiClient.defaults.headers = {
