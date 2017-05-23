@@ -1,5 +1,6 @@
 import axios from 'axios';
 import humps from 'humps';
+import qs from 'qs';
 
 const {
   transformRequest,
@@ -9,6 +10,12 @@ const {
 const apiClient = axios.create({
   transformRequest: [toJS, humps.decamelizeKeys].concat(transformRequest),
   transformResponse: transformResponse.concat(humps.camelizeKeys),
+  paramsSerializer: (params) => qs.stringify(
+    humps.decamelizeKeys(params),
+    {
+      arrayFormat: 'brackets',
+    }
+  ),
 });
 
 export function toJS(map) {
