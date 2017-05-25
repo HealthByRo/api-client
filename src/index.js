@@ -31,7 +31,6 @@ const apiClient = axios.create({
 });
 
 export function paramsSerializer(params) {
-  console.log('transformParamsFunctions', transformParamsFunctions);
   return transformParamsFunctions.reduce((transformedParams, transformParamsFn) => transformParamsFn(transformedParams), params);
 }
 
@@ -48,7 +47,6 @@ export function setBaseUrl(baseURL) {
 
 export function addTransformParamsFn(fn) {
   transformParamsFunctions.unshift(fn);
-  console.log('transformParamsFunctions', transformParamsFunctions);
 }
 
 export default apiClient;
