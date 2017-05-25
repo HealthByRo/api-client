@@ -1,28 +1,37 @@
 import axios from 'axios';
 import humps from 'humps';
-import qs from 'qs';
+import toJS from './toJS';
+import stringifyParams from './stringifyParams';
 
-const {
+let {
   transformRequest,
   transformResponse,
 } = axios.defaults;
 
+transformRequest = [
+  toJS,
+  humps.decamelizeKeys,
+  ...transformRequest,
+];
+
+transformResponse = [
+  ...transformResponse,
+  humps.camelizeKeys,
+];
+
+const transformParamsFunctions = [
+  humps.decamelizeKeys,
+  stringifyParams,
+];
+
 const apiClient = axios.create({
-  transformRequest: [toJS, humps.decamelizeKeys].concat(transformRequest),
-  transformResponse: transformResponse.concat(humps.camelizeKeys),
-  paramsSerializer: (params) => qs.stringify(
-    humps.decamelizeKeys(params),
-    {
-      arrayFormat: 'brackets',
-    }
-  ),
+  transformRequest,
+  transformResponse,
+  paramsSerializer,
 });
 
-export function toJS(map) {
-  if (typeof map === 'object' && typeof map.toJS === 'function') {
-    return map.toJS();
-  }
-  return map;
+export function paramsSerializer(params) {
+  return transformParamsFunctions.reduce((transformedParams, transformParamsFn) => transformParamsFn(transformedParams), params);
 }
 
 export function setHeaders(headers) {
@@ -34,6 +43,10 @@ export function setHeaders(headers) {
 
 export function setBaseUrl(baseURL) {
   apiClient.defaults.baseURL = baseURL;
+}
+
+export function addTransformParamsFn(fn) {
+  transformParamsFunctions.unshift(fn);
 }
 
 export default apiClient;
