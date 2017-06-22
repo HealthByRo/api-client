@@ -21,7 +21,8 @@
   "homepage": "https://bitbucket.org/arabellatech/api-client#readme",
   "scripts": {
     "build": "rm -rf lib && babel --presets es2015,stage-0 -d lib/ src/",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage --config=.jest.json",
+    "test:watch": "./node_modules/.bin/jest --watchAll --silent --config=.jest.json ./src",
     "lint": "npm run lint:js",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern lib/",
     "lint:js": "npm run lint:eslint -- . ",
@@ -33,7 +34,8 @@
   "pre-commit": "lint:staged",
   "dependencies": {
     "axios": "^0.16.1",
-    "humps": "^2.0.0"
+    "humps": "^2.0.0",
+    "jest": "^20.0.4"
   },
   "peerDependencies": {},
   "devDependencies": {

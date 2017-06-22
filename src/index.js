@@ -19,7 +19,7 @@ transformResponse = [
   humps.camelizeKeys,
 ];
 
-const transformParamsFunctions = [
+export const transformParamsFunctions = [
   humps.decamelizeKeys,
   stringifyParams,
 ];

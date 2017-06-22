@@ -1,7 +1,7 @@
 {
   "collectCoverageFrom": [
-    "app/**/*.{js,jsx}",
-    "!app/**/*.test{s}.{js,jsx}"
+    "src/*.{js,jsx}",
+    "!src/*.test{s}.{js,jsx}"
   ],
   "moduleDirectories": [
     "node_modules",
