@@ -20,7 +20,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/arabellatech/api-client#readme",
   "scripts": {
-    "build": "rm -rf lib && babel --presets es2015,stage-0 -d lib/ src/",
+    "prebuild": "npm run lint & npm run test",
+    "build": "rm -rf lib && babel --presets es2015,stage-0 -d lib/ src/ --ignore \"**/*.test.js\"",
     "test": "jest --coverage --config=.jest.json",
     "test:watch": "./node_modules/.bin/jest --watchAll --silent --config=.jest.json ./src",
     "test:badge": "yarn run test && node ./scripts/coverage.js",
