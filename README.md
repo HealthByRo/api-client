@@ -1,3 +1,5 @@
+![IMAGE](./coverage.svg)
+
 # api-client
 
 api-client is a HTTP client based on [axios](https://github.com/mzabriskie/axios).
