@@ -44,8 +44,10 @@ setHeaders({
 `addTransformParamsFn` adds function to the list of function which transforms request params. For instance `decamelizeOrderingParam` function decamlize `ordering` param in request params
 
 ```js
-import { addTransformParamsFn } from 'api-client';
-import decamelizeOrderingParam from 'api-client/lib/decamelizeOrderingParam';
+import {
+    addTransformParamsFn,
+    decamelizeOrderingParam,
+} from 'api-client';
 
 addTransformParamsFn(decamelizeOrderingParam);
 ```
