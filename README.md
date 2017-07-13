@@ -10,7 +10,7 @@ api-client is an instnce of axios with some additional configuration like:
 * cast request params from immutable.js collection to pure JS object
 
 ## Installing
-`yarn add https://bitbucket.org/arabellatech/react-sample-component`
+`yarn add https://bitbucket.org/arabellatech/api-client`
 
 **NOTE**: In your project should be only one instance of the api-client module. This means that api-client should be added to the `dependencies` section of package.json file only in your main application. Each submodule should have added api-client to the `peerDependencies` section. Otherwise, the configuration of api-client from your main application will not apply to the instances of api-client of submodules.
 
