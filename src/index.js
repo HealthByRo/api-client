@@ -3,6 +3,8 @@ import humps from 'humps';
 import toJS from './toJS';
 import stringifyParams from './stringifyParams';
 
+export decamelizeOrderingParam from './decamelizeOrderingParam';
+
 let {
   transformRequest,
   transformResponse,
