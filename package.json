@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/arabellatech/api-client.git"
+    "url": "git+ssh://git@bitbucket.org/healthbyro/api-client.git"
   },
   "keywords": [
     "unit",
@@ -15,9 +15,9 @@
     "api",
     "axios"
   ],
-  "author": "Arabella Front-End Team",
+  "author": "Roman Health",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/arabellatech/api-client#readme",
+  "homepage": "https://bitbucket.org/healthbyro/api-client#readme",
   "scripts": {
     "prebuild": "npm run lint && npm run test",
     "build": "rm -rf lib && babel --presets es2015,stage-0 -d lib/ src/ --ignore \"**/*.test.js\"",
