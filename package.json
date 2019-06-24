@@ -3,10 +3,7 @@
   "version": "1.3.4",
   "description": "Promise based HTTP client for the browser and node.js based on axios",
   "main": "lib/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/healthbyro/api-client.git"
-  },
+  "repository": "github:HealthByRo/api-client",
   "keywords": [
     "unit",
     "testing",
@@ -17,7 +14,7 @@
   ],
   "author": "Roman Health",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/healthbyro/api-client#readme",
+  "homepage": "https://github.com/HealthByRo/api-client/",
   "scripts": {
     "prebuild": "npm run lint && npm run test",
     "build": "rm -rf lib && babel --presets es2015,stage-0 -d lib/ src/ --ignore \"**/*.test.js\"",
