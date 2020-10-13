@@ -9,7 +9,7 @@ import apiClient, {
   transformParamsFunctions,
   addTransformParamsFn,
   paramsSerializer,
-} from './';
+} from '.';
 
 describe('apiClient', () => {
   it('should be defined', () => {
@@ -65,30 +65,37 @@ describe('apiClient', () => {
     });
 
     it('should rest of apiClient.defaults.transformRequest functon be the same as axios', () => {
-      expect(Object.values(apiClient.defaults.transformRequest).slice(2)).toEqual(axios.defaults.transformRequest);
+      expect(
+        Object.values(apiClient.defaults.transformRequest).slice(2)
+      ).toEqual(axios.defaults.transformRequest);
     });
   });
 
   describe('transformResponse', () => {
     it('should last function in apiClient.defaults.transformResponse be a humps.camelizeKeys', () => {
-      expect(Object.values(apiClient.defaults.transformResponse).slice(-1)[0]).toBe(humps.camelizeKeys);
+      expect(
+        Object.values(apiClient.defaults.transformResponse).slice(-1)[0]
+      ).toBe(humps.camelizeKeys);
     });
 
     it('should rest of apiClient.defaults.transformRequest functon be the same as axios', () => {
-      expect(Object.values(apiClient.defaults.transformResponse).slice(0, -1)).toEqual(axios.defaults.transformResponse);
+      expect(
+        Object.values(apiClient.defaults.transformResponse).slice(0, -1)
+      ).toEqual(axios.defaults.transformResponse);
     });
   });
 
   describe('setHeaders', () => {
     const newHeaders = {
       Authorization: 'JWT XYZ123',
-
     };
 
     it('should set headers when calling setHeaders(newHeaders)', () => {
       setHeaders(newHeaders);
 
-      expect(newHeaders.Authorization).toEqual(apiClient.defaults.headers.Authorization);
+      expect(newHeaders.Authorization).toEqual(
+        apiClient.defaults.headers.Authorization
+      );
     });
 
     it('should keep all old headers when calling setHeaders(newHeaders)', () => {
@@ -130,7 +137,9 @@ describe('apiClient', () => {
     });
 
     it('should contain humps.decamelizeKeys', () => {
-      expect(transformParamsFunctions.includes(humps.decamelizeKeys)).toBeTruthy();
+      expect(
+        transformParamsFunctions.includes(humps.decamelizeKeys)
+      ).toBeTruthy();
     });
 
     it('should contain humps.decamelizeKeys', () => {
@@ -141,7 +150,9 @@ describe('apiClient', () => {
       it('should add new transform params function to transformParamsFunctions', () => {
         addTransformParamsFn(decamelizeOrderingParam);
 
-        expect(transformParamsFunctions.includes(decamelizeOrderingParam)).toBeTruthy();
+        expect(
+          transformParamsFunctions.includes(decamelizeOrderingParam)
+        ).toBeTruthy();
       });
 
       describe('when calling paramsSerializer should transform params by all function in transformParamsFunctions', () => {
@@ -156,7 +167,9 @@ describe('apiClient', () => {
         };
         const expectedSerializedParams = 'first_name=John&last_name=Smith&ids%5B%5D=1&ids%5B%5D=2&ids%5B%5D=3&ids%5B%5D=4&age=50&foo=fooBar&bar=fooBar&ordering=firstName';
 
-        expect(paramsSerializer(receivedParams)).toEqual(expectedSerializedParams);
+        expect(paramsSerializer(receivedParams)).toEqual(
+          expectedSerializedParams
+        );
       });
     });
   });
