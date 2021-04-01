@@ -2371,9 +2371,10 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-lcov2badge@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/lcov2badge/-/lcov2badge-0.1.0.tgz#188aa2544070f1e7d3b396b4b2a7f05f01b76748"
+lcov2badge@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/lcov2badge/-/lcov2badge-0.1.2.tgz#37d653b8f430b06925c5cb2fae4d2d2ed5b32c4c"
+  integrity sha512-kXi1oE5hFfv/l7P4858d8+5FkaNNWTiSn1bi2JRusbyvYNuzxldCRr9YVnyBy/uBLevQxZvamtyN5PdpDpOXzQ==
   dependencies:
     byline "^4.1.1"
     shields-lightweight "^0.1.0"
