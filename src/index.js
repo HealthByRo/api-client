@@ -26,7 +26,7 @@ export const transformParamsFunctions = [
   stringifyParams,
 ];
 
-const apiClient = axios.create({
+export const apiClient = axios.create({
   transformRequest,
   transformResponse,
   paramsSerializer,
